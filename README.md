@@ -131,13 +131,6 @@ The script injects all essential VirtIO drivers for Windows 11:
 7. **Creates bootable ISO** - Uses oscdimg to generate properly bootable ISO with dual-boot support
 8. **Cleans up** - Removes temporary files
 
-## 🖥️ Tested Platforms
-
-- ✅ Proxmox VE (primary target)
-- ✅ QEMU/KVM
-- ✅ oVirt
-- ✅ Any other VirtIO-capable virtualization platform
-
 ## 📝 Example Output
 
 ```
@@ -175,7 +168,7 @@ See the [LICENSE](LICENSE) file for details, or visit [unlicense.org](https://un
 
 ## 🙏 Acknowledgments
 
-- [Chris Titus Tech](https://github.com/ChrisTitusTech) for the excellent MicroWin tool
+- [Chris Titus Tech](https://github.com/ChrisTitusTech) for his truly excellent WinUtil tool, which includes MicroWin
 - [Red Hat](https://www.redhat.com/) for the VirtIO drivers
 - The Proxmox and QEMU communities
 
