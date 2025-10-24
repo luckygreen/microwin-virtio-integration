@@ -1,14 +1,14 @@
 # MicroWin VirtIO Integration
 
-Automated VirtIO driver integration for MicroWin Windows 11 ISOs. This PowerShell script post-processes MicroWin ISOs to create fully "first-boot-ready" virtual machine images with complete VirtIO support.
+Automated [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) driver integration for MicroWin Windows 11 ISOs. This PowerShell script post-processes MicroWin ISOs to create fully "first-boot-ready" virtual machine images with complete [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) support.
 
-**Works with any VirtIO-capable virtualization platform:** Proxmox VE, QEMU, KVM, oVirt, and more.
+**Works with any [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)-capable virtualization platform:** Proxmox VE, QEMU, KVM, oVirt, and more.
 
 ## 🎯 What This Does
 
 This script eliminates all manual driver installation steps by:
 
-- **Injecting all 10 VirtIO drivers** into both `install.wim` (installed system) and `boot.wim` (Windows installer/WinPE)
+- **Injecting all 10 [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers** into both `install.wim` (installed system) and `boot.wim` (Windows installer/WinPE)
 - **Bundling virtio-win-guest-tools.exe** and configuring automatic silent installation after OOBE
 - **Generating bootable ISOs** with UEFI/BIOS dual-boot support
 - **Auto-detecting source files** in your working directory
@@ -16,11 +16,11 @@ This script eliminates all manual driver installation steps by:
 
 ### The Problem This Solves
 
-Deploying Windows VMs with VirtIO hardware typically involves a frustrating multi-step process with numerous manual interventions:
+Deploying Windows VMs with [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) hardware typically involves a frustrating multi-step process with numerous manual interventions:
 
 #### Problem #1: The Installer Can't See Your Disk
-The Windows installer immediately greets you with **"no drives found"** because `boot.wim` (the Windows PE environment) doesn't include VirtIO storage drivers. You're forced to either:
-- Load drivers manually during setup (requires mounting the VirtIO ISO, browsing folders, multiple clicks)
+The Windows installer immediately greets you with **"no drives found"** because `boot.wim` (the Windows PE environment) doesn't include [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) storage drivers. You're forced to either:
+- Load drivers manually during setup (requires mounting the [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) ISO, browsing folders, multiple clicks)
 - Use IDE/SATA emulation as a workaround, then reconfigure to VirtIO later
 - Create a custom answer file to inject drivers (complex and error-prone)
 
@@ -28,7 +28,7 @@ The Windows installer immediately greets you with **"no drives found"** because 
 Even after getting Windows installed, your work isn't done. Opening Device Manager reveals a sea of yellow warning triangles:
 - Network adapter not working (no connectivity)
 - Unknown devices for balloon driver, serial ports, RNG device
-- Missing drivers for input devices and other VirtIO hardware
+- Missing drivers for input devices and other [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) hardware
 - Each driver requires manual installation, system reboots, and verification
 
 #### Problem #3: Guest Tools Installation
@@ -46,20 +46,20 @@ Every single Windows VM deployment means repeating this entire process. For orga
 **This script eliminates ALL of these problems completely.**
 
 Your output ISO:
-- ✅ **Boots and installs immediately** with VirtIO storage visible from the start
+- ✅ **Boots and installs immediately** with [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) storage visible from the start
 - ✅ **Has zero missing drivers** - Device Manager is completely clean after first boot
-- ✅ **Installs guest tools automatically** - QEMU Guest Agent, SPICE components, and all VirtIO services start automatically after OOBE
+- ✅ **Installs guest tools automatically** - QEMU Guest Agent, SPICE components, and all [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) services start automatically after OOBE
 - ✅ **Requires zero manual intervention** - True "hands-off" deployment from ISO boot to fully functional VM
 
-The result: **What used to take 30-60 minutes of manual work per VM now takes zero.** Just boot the ISO, let Windows install, and you have a fully functional VirtIO-enabled VM with all drivers and tools pre-configured.
+The result: **What used to take 30-60 minutes of manual work per VM now takes zero.** Just boot the ISO, let Windows install, and you have a fully functional [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)-enabled VM with all drivers and tools pre-configured.
 
 ## ✨ Features
 
 - ✅ **Complete automation** - Zero manual driver installation required
-- ✅ **Boot.wim injection** - Installer can see VirtIO storage immediately (no IDE workaround!)
+- ✅ **Boot.wim injection** - Installer can see [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) storage immediately (no IDE workaround!)
 - ✅ **Install.wim injection** - All drivers available in installed system
 - ✅ **Guest tools auto-install** - QEMU Guest Agent and SPICE components install silently after OOBE
-- ✅ **Smart file detection** - Automatically finds MicroWin ISO, VirtIO ISO, and guest tools
+- ✅ **Smart file detection** - Automatically finds MicroWin ISO, [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) ISO, and guest tools
 - ✅ **Proper bootable ISOs** - Full UEFI and BIOS support via oscdimg
 - ✅ **Clean volume labels** - Descriptive names under 32 characters (ISO9660 compatible)
 
@@ -90,7 +90,7 @@ The result: **What used to take 30-60 minutes of manual work per VM now takes ze
 
 3. **Wait for completion** (~15-20 minutes)
 
-4. **Use the output ISO** with your VirtIO-enabled VM!
+4. **Use the output ISO** with your [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)-enabled VM!
 
 ### Manual File Selection
 
@@ -103,30 +103,30 @@ If you prefer to specify files explicitly:
     -GuestToolsExe ".\virtio-win-guest-tools.exe"
 ```
 
-## 📋 VirtIO Drivers Included
+## 📋 [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) Drivers Included
 
-The script injects all essential VirtIO drivers for Windows 11:
+The script injects all essential [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers for Windows 11:
 
 | Driver | Purpose |
 |--------|---------|
 | **NetKVM** | Virtual network adapter |
-| **viostor** | VirtIO SCSI block storage |
-| **vioscsi** | VirtIO SCSI controller |
+| **viostor** | [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) SCSI block storage |
+| **vioscsi** | [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) SCSI controller |
 | **Balloon** | Dynamic memory management |
 | **viorng** | Random number generator |
 | **vioserial** | Virtual serial port |
 | **qemupciserial** | PCI-based serial |
 | **vioinput** | Keyboard and mouse input |
 | **pvpanic** | Guest crash notification |
-| **viofs** | VirtIO-FS shared filesystem |
+| **viofs** | [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/)-FS shared filesystem |
 
 ## 🎓 How It Works
 
-1. **Mounts source ISOs** - MicroWin and VirtIO ISOs
+1. **Mounts source ISOs** - MicroWin and [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) ISOs
 2. **Extracts ISO contents** - Copies MicroWin ISO to working directory
 3. **Verifies boot files** - Ensures BIOS and UEFI boot files exist
-4. **Injects drivers into install.wim** - Adds VirtIO drivers to the installed Windows image
-5. **Injects drivers into boot.wim** - Adds VirtIO drivers to Windows installer/WinPE environment
+4. **Injects drivers into install.wim** - Adds [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers to the installed Windows image
+5. **Injects drivers into boot.wim** - Adds [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers to Windows installer/WinPE environment
 6. **Adds guest tools** - Copies virtio-win-guest-tools.exe and creates SetupComplete.cmd for auto-install
 7. **Creates bootable ISO** - Uses oscdimg to generate properly bootable ISO with dual-boot support
 8. **Cleans up** - Removes temporary files
@@ -140,10 +140,10 @@ Success!
 New ISO: MicroWin11_25H2_Eng_x64_VIO285.iso
 
 Features integrated:
-  ✓ VirtIO drivers injected into install.wim (post-install)
-  ✓ VirtIO drivers injected into boot.wim (installer phase)
+  ✓ [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers injected into install.wim (post-install)
+  ✓ [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers injected into boot.wim (installer phase)
   ✓ Guest tools auto-install via SetupComplete.cmd
-  ✓ Full hands-off VirtIO deployment - no IDE workaround needed!
+  ✓ Full hands-off [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) deployment - no IDE workaround needed!
   ✓ Volume label: MicroWin11_25H2_Eng_x64_VIO285
 ```
 
@@ -168,8 +168,8 @@ See the [LICENSE](LICENSE) file for details, or visit [unlicense.org](https://un
 
 ## 🙏 Acknowledgments
 
-- [Chris Titus Tech](https://github.com/ChrisTitusTech) for his truly excellent WinUtil tool, which includes MicroWin
-- [Red Hat](https://www.redhat.com/) for the VirtIO drivers
+- [Chris Titus Tech](https://github.com/ChrisTitusTech) for his truly excellent [WinUtil](https://github.com/ChrisTitusTech/winutil) tool, which includes MicroWin
+- [Red Hat](https://www.redhat.com/) for the [VirtIO](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/) drivers
 - The Proxmox and QEMU communities
 
 ## 📞 Support
